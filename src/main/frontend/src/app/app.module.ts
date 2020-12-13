@@ -6,6 +6,9 @@ import { EcommerceComponent } from './ecommerce/ecommerce.component';
 import { ProductsComponent } from './ecommerce/products/products.component';
 import { OrdersComponent } from './ecommerce/orders/orders.component';
 import { ShoppingCartComponent } from './ecommerce/shopping-cart/shopping-cart.component';
+import {EcommerceService} from './ecommerce/service/EcommerceService';
+import {HttpClient, HttpClientModule, HttpHandler} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,9 +19,14 @@ import { ShoppingCartComponent } from './ecommerce/shopping-cart/shopping-cart.c
     ShoppingCartComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    EcommerceService,
+    HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
