@@ -17,9 +17,8 @@ public class EcommerceApplication {
 	@Bean
 	CommandLineRunner runner(ProductService productService) {
 		return args -> {
-			productService.save(new Product(1L, "iPhone", 800.0, "https://mobico.nl/wp-content/uploads/2017/11/Refurbished-iPhone-8-64GB-Space-Grey.jpg"));
-			productService.save(new Product(2L, "iPad", 1200.0, "https://image.coolblue.be/max/2048x1536/products/1477086"));
-
+			productService.save(new Product(1L, "iPhone", 800.0, "http://placehold.it/200x100"));
+			productService.save(new Product(2L, "iPad", 1200.0, "http://placehold.it/200x100"));
 		};
 	}
 
