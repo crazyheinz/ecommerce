@@ -19,6 +19,9 @@ public class EcommerceApplication {
 		return args -> {
 			productService.save(new Product(1L, "iPhone", 800.0, "http://placehold.it/200x100"));
 			productService.save(new Product(2L, "iPad", 1200.0, "http://placehold.it/200x100"));
+			productService.save(new Product(3L, "iMac", 2000.0, "http://placehold.it/200x100"));
+			productService.save(new Product(4L, "Macie pro", 2000.0, "http://placehold.it/200x100"));
+			productService.save(new Product(5L, "airpods", 300.0, "http://placehold.it/200x100"));
 		};
 	}
 

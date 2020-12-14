@@ -11,8 +11,6 @@ import javax.persistence.criteria.Order;
 @Setter
 public class OrderProductDto {
 
-    OrderProduct orderProduct;
-    Order order;
     Product product;
     Integer quantity;
 }

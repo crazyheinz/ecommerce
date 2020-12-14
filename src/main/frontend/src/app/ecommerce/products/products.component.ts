@@ -44,6 +44,8 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(order: ProductOrder) {
+    console.log(order);
+
     this.ecommerceService.productOrder = order;
     this.selectedProductOrder = this.ecommerceService.productOrder;
     this.productSelected = true;

@@ -33,7 +33,9 @@ public class OrderController {
     OrderService orderService;
     OrderProductService orderProductService;
 
-    public OrderController(ProductService productService, OrderService orderService, OrderProductService orderProductService) {
+    public OrderController(ProductService productService,
+                           OrderService orderService,
+                           OrderProductService orderProductService) {
         this.productService = productService;
         this.orderService = orderService;
         this.orderProductService = orderProductService;

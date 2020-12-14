@@ -29,6 +29,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   loadTotal() {
+    console.log('loading total')
     this.sub = this.ecommerceService.OrdersChanged.subscribe(() => {
       this.total = this.calculateTotal(this.orders.productOrders);
     });
@@ -66,6 +67,11 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   private calculateTotal(productOrders: ProductOrder[]) {
-    return 0;
+    let sum = 0;
+    productOrders.forEach(value => {
+      sum += (value.product.price * value.quantity);
+    });
+    console.log(sum);
+    return sum;
   }
 }
