@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {Product, ProductOrder, ProductOrders} from '../models/Product';
+import {Component, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {EcommerceService} from '../service/EcommerceService';
+import {ProductOrder} from '../models/ProductOrder';
+import {Product} from '../models/Product';
+import {ProductOrders} from '../models/ProductOrders';
 
 @Component({
   selector: 'app-products',
@@ -39,15 +41,15 @@ export class ProductsComponent implements OnInit {
 
   loadOrders() {
     this.sub = this.ecommerceService.OrdersChanged.subscribe(() => {
-      this.shoppingCartOrders = this.ecommerceService.orders;
+      this.shoppingCartOrders = this.ecommerceService.ProductOrders;
     });
   }
 
   addToCart(order: ProductOrder) {
     console.log(order);
 
-    this.ecommerceService.productOrder = order;
-    this.selectedProductOrder = this.ecommerceService.productOrder;
+    this.ecommerceService.SelectedProductOrder = order;
+    this.selectedProductOrder = this.ecommerceService.SelectedProductOrder;
     this.productSelected = true;
   }
 
@@ -57,15 +59,15 @@ export class ProductsComponent implements OnInit {
       this.shoppingCartOrders.productOrders.splice(
         this.getProductIndex(productOrder.product), 1);
     }
-    this.ecommerceService.orders = this.shoppingCartOrders;
-    this.shoppingCartOrders = this.ecommerceService.orders;
+    this.ecommerceService.ProductOrders = this.shoppingCartOrders;
+    this.shoppingCartOrders = this.ecommerceService.ProductOrders;
     this.productSelected = false;
   }
 
   reset() {
     this.productOrders = [];
     this.loadProducts();
-    this.ecommerceService.orders.productOrders = [];
+    this.ecommerceService.ProductOrders.productOrders = [];
     this.loadOrders();
     this.productSelected = false;
   }
@@ -75,7 +77,7 @@ export class ProductsComponent implements OnInit {
   }
 
   private getProductIndex(product: Product) {
-    return this.ecommerceService.orders.productOrders.findIndex(
+    return this.ecommerceService.ProductOrders.productOrders.findIndex(
       value => value.product === product);
   }
 }

@@ -11,15 +11,3 @@ export class Product {
     this.pictureUrl = pictureUrl;
   }
 }
-export class ProductOrder {
-  product: Product;
-  quantity: number;
-
-  constructor(product: Product, quantity: number) {
-    this.product = product;
-    this.quantity = quantity;
-  }
-}
-export class ProductOrders {
-  productOrders: ProductOrder[] = [];
-}

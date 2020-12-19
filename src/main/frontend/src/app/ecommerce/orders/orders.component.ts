@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {ProductOrders} from '../models/Product';
+import {Component, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {EcommerceService} from '../service/EcommerceService';
+import {ProductOrders} from '../models/ProductOrders';
 
 @Component({
   selector: 'app-orders',
@@ -15,13 +15,13 @@ export class OrdersComponent implements OnInit {
   sub: Subscription;
 
   constructor(private ecommerceService: EcommerceService) {
-    this.orders = this.ecommerceService.orders;
+    this.orders = this.ecommerceService.ProductOrders;
   }
 
   ngOnInit() {
     this.paid = false;
     this.sub = this.ecommerceService.OrdersChanged.subscribe(() => {
-      this.orders = this.ecommerceService.orders;;
+      this.orders = this.ecommerceService.ProductOrders;;
     });
     this.loadTotal();
   }
@@ -32,7 +32,8 @@ export class OrdersComponent implements OnInit {
   }
 
   loadTotal() {
-
-
+    this.sub = this.ecommerceService.TotalChanged.subscribe(() => {
+      this.total = this.ecommerceService.Total;
+    });
   }
 }

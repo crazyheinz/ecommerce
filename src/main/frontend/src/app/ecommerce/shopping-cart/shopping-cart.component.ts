@@ -1,7 +1,8 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
-import {ProductOrder, ProductOrders} from '../models/Product';
 import {Subscription} from 'rxjs';
 import {EcommerceService} from '../service/EcommerceService';
+import {ProductOrders} from '../models/ProductOrders';
+import {ProductOrder} from '../models/ProductOrder';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -37,13 +38,14 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   loadCart() {
     this.sub = this.ecommerceService.ProductOrderChanged.subscribe(() => {
-      let productOrder = this.ecommerceService.productOrder;
+      let productOrder = this.ecommerceService.SelectedProductOrder;
+      console.log('cart loading' + productOrder)
       if (productOrder) {
         this.orders.productOrders.push(new ProductOrder(
           productOrder.product, productOrder.quantity));
       }
-      this.ecommerceService.orders = this.orders;
-      this.orders = this.ecommerceService.orders;
+      this.ecommerceService.ProductOrders = this.orders;
+      this.orders = this.ecommerceService.ProductOrders;
       this.total = this.calculateTotal(this.orders.productOrders);
     });
   }
@@ -54,7 +56,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   finishOrder() {
     this.orderFinished = true;
-    this.ecommerceService.total = this.total;
+    this.ecommerceService.Total = this.total;
     this.onOrderFinished.emit(this.orderFinished);
   }
 

@@ -1,6 +1,7 @@
 package com.crazyheinz.ecommerce.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import javax.persistence.Transient;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
     public class OrderProduct {
 
     @EmbeddedId
@@ -39,7 +41,5 @@ import javax.persistence.Transient;
     public Double getTotalPrice() {
         return getProduct().getPrice() * getQuantity();
     }
-
-    // hashcode() and equals() methods
 }
 
