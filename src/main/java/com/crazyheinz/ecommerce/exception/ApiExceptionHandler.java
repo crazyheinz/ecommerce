@@ -1,7 +1,5 @@
 package com.crazyheinz.ecommerce.exception;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -9,8 +7,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {
@@ -35,27 +31,6 @@ public class ApiExceptionHandler {
         error.setMessage(e.getMessage());
 
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-    }
-
-    @Getter
-    @Setter
-    public static class ErrorItem {
-
-        private String code;
-        private String message;
-
-    }
-
-    @Getter
-    @Setter
-    public static class ErrorResponse {
-
-        private List<ErrorItem> errorList = new ArrayList<>();
-
-        public void addError(ErrorItem errorItem) {
-            errorList.add(errorItem);
-        }
-
     }
 }
 

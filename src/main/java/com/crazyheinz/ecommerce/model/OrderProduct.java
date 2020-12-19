@@ -14,7 +14,7 @@ import javax.persistence.Transient;
 @Getter
 @Setter
 @NoArgsConstructor
-public class OrderProduct {
+    public class OrderProduct {
 
     @EmbeddedId
     @JsonIgnore

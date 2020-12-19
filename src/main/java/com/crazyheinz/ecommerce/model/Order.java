@@ -1,5 +1,6 @@
 package com.crazyheinz.ecommerce.model;
 
+import com.crazyheinz.ecommerce.controller.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
@@ -30,7 +31,14 @@ public class Order {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dateCreated;
 
-    private String status;
+    private OrderStatus status;
+
+    public Order() {
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
 
     @JsonManagedReference
     @OneToMany(mappedBy = "pk.order")
