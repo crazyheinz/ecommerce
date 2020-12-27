@@ -4,7 +4,7 @@ import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import {OrdersComponent} from './orders/orders.component';
 
 @Component({
-  selector: 'app-ecommerce',
+  selector: 'app-home',
   styles: ['.container { padding-top: 10px }'],
   template: `
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -13,7 +13,7 @@ import {OrdersComponent} from './orders/orders.component';
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation"
-                (click)="toggleCollapsed()">
+                (click)="toggleCollapsed()" >
           <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -21,10 +21,10 @@ import {OrdersComponent} from './orders/orders.component';
              [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#" (click)="reset()">Home
+              <a class="nav-link" href="#" routerLink="/" (click)="reset()">Home
                 <span class="sr-only">(current)</span>
               </a>
-              <a class="nav-link" href="#" (click)="reset()">Login
+              <a class="nav-link" href="#" routerLink="login" (click)="reset()">Login
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -48,7 +48,7 @@ import {OrdersComponent} from './orders/orders.component';
   `
 
 })
-export class EcommerceComponent implements OnInit {
+export class HomeComponent implements OnInit {
   collapsed = true;
   orderFinished = false;
 

@@ -5,8 +5,11 @@ import {Component} from '@angular/core';
   styles: ['.container { padding-top: 65px }'],
   template: `
     <div class="container">
-      <app-ecommerce></app-ecommerce>
-    </div>`
+      <app-home></app-home>
+    </div>
+    <router-outlet></router-outlet>
+  `
+
 })
 export class AppComponent {
   title = 'frontend';
