@@ -1,20 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {EcommerceService} from '../service/EcommerceService';
-import {ProductOrder} from '../models/ProductOrder';
+import {OrderedProduct} from '../models/OrderedProduct';
 import {Product} from '../models/Product';
-import {ProductOrders} from '../models/ProductOrders';
+import {OrderedProducts} from '../models/OrderedProducts';
 
 @Component({
   selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
+  templateUrl: './products.component.html'
 })
 export class ProductsComponent implements OnInit {
-  productOrders: ProductOrder[] = [];
+  productOrders: OrderedProduct[] = [];
   products: Product[] = [];
-  selectedProductOrder: ProductOrder;
-  private shoppingCartOrders: ProductOrders;
+  selectedProductOrder: OrderedProduct;
+  private shoppingCartOrders: OrderedProducts;
   sub: Subscription;
   productSelected: boolean = false;
 
@@ -32,7 +32,7 @@ export class ProductsComponent implements OnInit {
         (products: any[]) => {
           this.products = products;
           this.products.forEach(product => {
-            this.productOrders.push(new ProductOrder(product, 0));
+            this.productOrders.push(new OrderedProduct(product, 0));
           })
         },
         (error) => console.log(error)
@@ -45,7 +45,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  addToCart(order: ProductOrder) {
+  addToCart(order: OrderedProduct) {
     console.log(order);
 
     this.ecommerceService.SelectedProductOrder = order;
@@ -53,7 +53,7 @@ export class ProductsComponent implements OnInit {
     this.productSelected = true;
   }
 
-  removeFromCart(productOrder: ProductOrder) {
+  removeFromCart(productOrder: OrderedProduct) {
     let index = this.getProductIndex(productOrder.product);
     if (index > -1) {
       this.shoppingCartOrders.productOrders.splice(

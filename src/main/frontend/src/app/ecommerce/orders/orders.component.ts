@@ -1,15 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {EcommerceService} from '../service/EcommerceService';
-import {ProductOrders} from '../models/ProductOrders';
+import {OrderedProducts} from '../models/OrderedProducts';
 
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-  orders: ProductOrders;
+  orders: OrderedProducts;
   total: number;
   paid: boolean;
   sub: Subscription;

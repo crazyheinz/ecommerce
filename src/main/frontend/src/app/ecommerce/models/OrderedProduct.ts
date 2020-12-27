@@ -1,6 +1,6 @@
 import {Product} from './Product';
 
-export class ProductOrder {
+export class OrderedProduct {
   product: Product;
   quantity: number;
 

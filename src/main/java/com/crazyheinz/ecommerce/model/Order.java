@@ -43,13 +43,13 @@ public class Order {
     @JsonManagedReference
     @OneToMany(mappedBy = "pk.order")
     @Valid
-    private List<OrderProduct> orderProducts = new ArrayList<>();
+    private List<OrderedProduct> orderedProducts = new ArrayList<>();
 
     @Transient
     public Double getTotalOrderPrice() {
         double sum = 0D;
-        List<OrderProduct> orderProducts = getOrderProducts();
-        for (OrderProduct op : orderProducts) {
+        List<OrderedProduct> orderedProducts = getOrderedProducts();
+        for (OrderedProduct op : orderedProducts) {
             sum += op.getTotalPrice();
         }
         return sum;
@@ -57,6 +57,6 @@ public class Order {
 
     @Transient
     public int getNumberOfProducts() {
-        return this.orderProducts.size();
+        return this.orderedProducts.size();
     }
 }

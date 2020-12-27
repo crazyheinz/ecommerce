@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class OrderProductPK implements Serializable {
+public class OrderedProductPK implements Serializable {
 
     @JsonBackReference
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

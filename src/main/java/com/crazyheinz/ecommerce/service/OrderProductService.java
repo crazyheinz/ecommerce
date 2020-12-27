@@ -1,9 +1,9 @@
 package com.crazyheinz.ecommerce.service;
 
-import com.crazyheinz.ecommerce.model.OrderProduct;
+import com.crazyheinz.ecommerce.model.OrderedProduct;
 
 
 public interface OrderProductService {
 
-    OrderProduct create(OrderProduct orderProduct);
+    OrderedProduct create(OrderedProduct orderedProduct);
 }

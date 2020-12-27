@@ -1,16 +1,16 @@
 import {Subject} from "rxjs/internal/Subject";
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from "@angular/core";
-import {ProductOrder} from '../models/ProductOrder';
-import {ProductOrders} from '../models/ProductOrders';
+import {OrderedProduct} from '../models/OrderedProduct';
+import {OrderedProducts} from '../models/OrderedProducts';
 
 @Injectable()
 export class EcommerceService {
   private productsUrl = "/api/products";
   private ordersUrl = "/api/orders";
 
-  private productOrder: ProductOrder;
-  private orders: ProductOrders = new ProductOrders();
+  private productOrder: OrderedProduct;
+  private orders: OrderedProducts = new OrderedProducts();
 
   private productOrderSubject = new Subject();
   private ordersSubject = new Subject();
@@ -29,26 +29,26 @@ export class EcommerceService {
     return this.http.get(this.productsUrl);
   }
 
-  saveOrder(order: ProductOrders) {
-    return this.http.post(this.ordersUrl, order);
+  set SelectedProductOrder(value: OrderedProduct) {
+    this.productOrder = value;
+    this.productOrderSubject.next();
   }
 
   get SelectedProductOrder() {
     return this.productOrder;
   }
 
-  set SelectedProductOrder(value: ProductOrder) {
-    this.productOrder = value;
-    this.productOrderSubject.next();
+  set ProductOrders(value: OrderedProducts) {
+    this.orders = value;
+    this.ordersSubject.next();
   }
 
   get ProductOrders() {
     return this.orders;
   }
 
-  set ProductOrders(value: ProductOrders) {
-    this.orders = value;
-    this.ordersSubject.next();
+  saveOrder(order: OrderedProducts) {
+    return this.http.post(this.ordersUrl, order);
   }
 
   get Total() {

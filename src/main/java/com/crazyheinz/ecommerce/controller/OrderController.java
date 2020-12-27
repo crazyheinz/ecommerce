@@ -4,7 +4,7 @@ import com.crazyheinz.ecommerce.dto.OrderForm;
 import com.crazyheinz.ecommerce.dto.OrderProductDto;
 import com.crazyheinz.ecommerce.exception.ResourceNotFoundException;
 import com.crazyheinz.ecommerce.model.Order;
-import com.crazyheinz.ecommerce.model.OrderProduct;
+import com.crazyheinz.ecommerce.model.OrderedProduct;
 import com.crazyheinz.ecommerce.service.OrderProductService;
 import com.crazyheinz.ecommerce.service.OrderService;
 import com.crazyheinz.ecommerce.service.ProductService;
@@ -56,11 +56,11 @@ public class OrderController {
         order.setStatus(OrderStatus.PAID);
         order = this.orderService.create(order);
 
-        List<OrderProduct> orderProducts = new ArrayList<>();
+        List<OrderedProduct> orderedProducts = new ArrayList<>();
         for (OrderProductDto dto : formDtos) {
-            orderProducts.add(
+            orderedProducts.add(
                 orderProductService.create(
-                    new OrderProduct(
+                    new OrderedProduct(
                         order,
                         productService.getProduct(dto.getProduct().getId()),
                         dto.getQuantity()
@@ -69,7 +69,7 @@ public class OrderController {
             );
         }
 
-        order.setOrderProducts(orderProducts);
+        order.setOrderedProducts(orderedProducts);
 
         this.orderService.update(order);
 

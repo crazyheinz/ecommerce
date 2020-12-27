@@ -1,6 +1,6 @@
 package com.crazyheinz.ecommerce.service;
 
-import com.crazyheinz.ecommerce.model.OrderProduct;
+import com.crazyheinz.ecommerce.model.OrderedProduct;
 import com.crazyheinz.ecommerce.repository.OrderProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class OrderProductServiceImpl implements OrderProductService {
     }
 
     @Override
-    public OrderProduct create(OrderProduct orderProduct) {
-        return this.orderProductRepository.save(orderProduct);
+    public OrderedProduct create(OrderedProduct orderedProduct) {
+        return this.orderProductRepository.save(orderedProduct);
     }
 }

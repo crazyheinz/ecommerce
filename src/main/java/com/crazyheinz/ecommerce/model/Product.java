@@ -34,4 +34,50 @@ public class Product {
         this.price = price;
         this.pictureUrl = pictureUrl;
     }
+
+    private Product(Builder builder) {
+        id = builder.id;
+        name = builder.name;
+        price = builder.price;
+        pictureUrl = builder.pictureUrl;
+    }
+
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private Long id;
+        private @NotNull(message = "Product name is required.") String name;
+        private Double price;
+        private String pictureUrl;
+
+        private Builder() {
+        }
+
+        public Builder withId(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder withName(@NotNull(message = "Product name is required.") String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder withPrice(Double price) {
+            this.price = price;
+            return this;
+        }
+
+        public Builder withPictureUrl(String pictureUrl) {
+            this.pictureUrl = pictureUrl;
+            return this;
+        }
+
+        public Product build() {
+            return new Product(this);
+        }
+    }
 }

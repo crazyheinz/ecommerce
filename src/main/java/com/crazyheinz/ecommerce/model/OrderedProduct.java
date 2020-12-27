@@ -16,17 +16,17 @@ import javax.persistence.Transient;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode
-    public class OrderProduct {
+    public class OrderedProduct {
 
     @EmbeddedId
     @JsonIgnore
-    private OrderProductPK pk;
+    private OrderedProductPK pk;
 
     @Column(nullable = false)
     private Integer quantity;
 
-    public OrderProduct(Order order, Product product, Integer quantity) {
-        pk = new OrderProductPK();
+    public OrderedProduct(Order order, Product product, Integer quantity) {
+        pk = new OrderedProductPK();
         pk.setOrder(order);
         pk.setProduct(product);
         this.quantity = quantity;
