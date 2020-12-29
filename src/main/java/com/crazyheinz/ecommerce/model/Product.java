@@ -1,6 +1,7 @@
 package com.crazyheinz.ecommerce.model;
 
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode
 @NoArgsConstructor
 public class Product {
     @Id
@@ -80,4 +82,5 @@ public class Product {
             return new Product(this);
         }
     }
+
 }
